@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços de Chef de Cozinha</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Chef de Cozinha</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#cardapio">Cardápio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sobre">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contato">Contato</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#fale-conosco">Fale Conosco</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h1 class="text-center">Serviços de Chef de Cozinha</h1>
+
+  <!-- Carrossel Dinâmico -->
+  <div id="dynamicCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#dynamicCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#dynamicCarousel" data-slide-to="1"></li>
+      <li data-target="#dynamicCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/feijoada.jpg" class="d-block w-100" alt="Feijoada">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Feijoada</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/galinhada.jpg" class="d-block w-100" alt="Galinhada">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Galinhada</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/coxa.jpg" class="d-block w-100" alt="Coxa e Sobre Coxa Recheada">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Coxa e Sobre Coxa Recheada</h5>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#dynamicCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#dynamicCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Próximo</span>
+    </a>
+  </div>
+
+  <!-- Cardápio Section -->
+  <section id="cardapio" class="mt-5">
+    <h2 class="text-center">Cardápio</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/feijoada.jpg" class="card-img-top" alt="Feijoada">
+          <div class="card-body">
+            <h5 class="card-title">Feijoada</h5>
+            <p class="card-text">R$25 por pessoa</p>
+            <input type="radio" name="menu" value="15"> Selecionar
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/galinhada.jpg" class="card-img-top" alt="Galinhada">
+          <div class="card-body">
+            <h5 class="card-title">Galinhada</h5>
+            <p class="card-text">R$25 por pessoa</p>
+            <input type="radio" name="menu" value="20"> Selecionar
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/coxa.jpg" class="card-img-top" alt="Coxa e Sobre Coxa Recheada">
+          <div class="card-body">
+            <h5 class="card-title">Coxa e Sobre Coxa Recheada</h5>
+            <p class="card-text">R$30 por pessoa</p>
+            <input type="radio" name="menu" value="30"> Selecionar
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/batata.jpg" class="card-img-top" alt="Batata Rosti">
+          <div class="card-body">
+            <h5 class="card-title">Batata Rosti</h5>
+            <p class="card-text">R$30 por pessoa</p>
+            <input type="radio" name="menu" value="30"> Selecionar
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/arroz.jpg" class="card-img-top" alt="Arros Carreteiro">
+          <div class="card-body">
+            <h5 class="card-title">Arros Carreteiro</h5>
+            <p class="card-text">R$35 por pessoa</p>
+            <input type="radio" name="menu" value="30"> Selecionar
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="img/molho.jpg" class="card-img-top" alt="Molho Madeira">
+          <div class="card-body">
+          <h5 class="card-title">Molho Madeira"</h5>
+          <p class="card-text">R$30 por pessoa</p>
+          <input type="radio" name="menu" value="30"> Selecionar
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+
+<!-- Opção de Compra dos Ingredientes -->
+<section id="compra-ingredientes" class="mt-5">
+  <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
+  <div class="form-group">
+    <label for="option">Quem irá comprar os ingredientes?</label>
+    <select class="form-control" id="option" onchange="showHideIngredientPrice()">
+      <option value="cliente">Cliente</option>
+      <option value="profissional">Profissional</option>
+    </select>
+  </div>
+  <div class="form-group" id="ingredient-price" style="display: none;">
+    <label for="ingredientPrice">Preço dos Ingredientes por Pessoa:</label>
+    <input type="number" class="form-control" id="ingredientPrice" value="10" min="0">
+  </div>
+</section>
+
+<!-- Sobre Section -->
+<section id="sobre" class="mt-5">
+  <h2 class="text-center">Sobre</h2>
+  <p class="text-center">Somos uma equipe dedicada a proporcionar experiências culinárias inesquecíveis. Com anos de experiência, oferecemos uma variedade de cardápios preparados com ingredientes de alta qualidade.</p>
+</section>
+
+<!-- Contato Section -->
+<section id="contato" class="mt-5">
+  <h2 class="text-center">Contato</h2>
+  <p class="text-center">Entre em contato conosco através das nossas redes sociais ou envie um e-mail para valdericegomesuc@gmail.com</p>
+</section>
+  <!-- Fale Conosco Section -->
+  <section id="fale-conosco" class="mt-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <h2>Fale Conosco</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Nome:</label>
+              <input type="text" class="form-control form-control-sm" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" class="form-control form-control-sm" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem:</label>
+              <textarea class="form-control form-control-sm" id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulário para seleção de cardápio -->
+<form id="service-form" class="mt-4">
+  <div class="form-group">
+    <label for="people">Número de Pessoas:</label>
+    <input type="number" class="form-control" id="people" min="1" value="1">
+  </div>
+  <div class="form-group">
+    <label for="assistant">Deseja um Assistente? (R$50 fixo):</label>
+    <select class="form-control" id="assistant">
+      <option value="0">Não</option>
+      <option value="50">Sim</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-primary btn-block" onclick="calculateTotal()">Calcular Valor Total</button>
+</form>
+<h3 class="text-center mt-4">Valor Total: R$ <span id="total-value">0</span></h3>
+</div>
+
+<!-- Botões de Redes Sociais -->
+<div class="social-buttons text-center mt-5">
+  <a href="https://api.whatsapp.com/send?phone=5561993133448" class="btn btn-success mx-2">WhatsApp</a>
+  <a href="https://facebook.com/SEUPERFIL" class="btn btn-primary mx-2">Facebook</a>
+  <a href="https://instagram.com/SEUPERFIL" class="btn btn-danger mx-2">Instagram</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="js/scriot.js"></script>
+</body>
+</html>
