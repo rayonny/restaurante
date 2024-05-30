@@ -13,10 +13,10 @@ h1 {
 }
 
 form {
-  background-color: #19d9f1;
+  background-color: #04adc2;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(246, 245, 245, 0.96);
+  box-shadow: 0px 0px 10px rgba(238, 8, 8, 0.1);
 }
 
 .card-deck .card {
