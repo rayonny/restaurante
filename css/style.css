@@ -1,6 +1,6 @@
-/* styles.css */
+
 body {
-  background-image: url('../img/fundo.jpg');
+  background-image: url('../img/fundo3.jpg');
   background-size: cover; /* Para cobrir toda a área do corpo */
   background-position: center; /* Para centralizar a imagem */
   background-color: #a8a4a6;
@@ -10,16 +10,26 @@ h1 {
   margin-bottom: 40px;
 }
 
+/* Estilize os títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: #18050f; /* Cor dos títulos */
+}
+
+/* Estilize o texto normal */
+p, label, span, .nav-link {
+  color: #18050f; /* Cor do texto normal */
+}
+
 .social-buttons a {
   width: 150px;
   margin: 5px;
 }
 
 form {
-  background-color: #04adc2;
+  background-color: #04899a;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgb(17, 60, 224);
+  box-shadow: 0px 0px 10px rgb(24, 5, 15);
 }
 
 .card-deck .card {
