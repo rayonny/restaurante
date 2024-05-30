@@ -26,10 +26,10 @@ p, label, span, .nav-link {
 }
 
 form {
-  background-color: #04899a;
+  background-color: #27dcf3;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgb(24, 5, 15);
+  box-shadow: 0px 0px 10px rgb(201, 12, 12);
 }
 
 .card-deck .card {
