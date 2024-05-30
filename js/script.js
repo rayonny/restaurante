@@ -1,4 +1,3 @@
-// scripts.js
 function calculateTotal() {
   const menuPrice = parseFloat(document.querySelector('input[name="menu"]:checked').value);
   const numberOfPeople = parseInt(document.getElementById('people').value);

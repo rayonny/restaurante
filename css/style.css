@@ -2,7 +2,7 @@ body {
   background-image: url('../img/fundo3.jpg');
   background-size: cover;
   background-position: center;
-  background-color: #f5077e;
+  background-color: #18050f;
 }
 
 h1 {
@@ -63,6 +63,17 @@ form {
   background-image: linear-gradient(to right, red, orange, black, green, blue, indigo, violet);
   -webkit-background-clip: text;
   color: transparent !important; /* Adicione !important aqui */
+}
+/* No seu arquivo style.css */
+
+/* Estilize o título da seção de contato */
+h2.text-center {
+  font-size: 46px; /* Tamanho da fonte desejado */
+}
+
+/* Estilize o texto da seção de contato */
+p.text-center {
+  font-size: 30px; /* Tamanho da fonte desejado */
 }
 
 
