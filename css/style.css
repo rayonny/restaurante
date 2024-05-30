@@ -19,7 +19,7 @@ form {
   background-color: #04adc2;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(238, 8, 8, 0.1);
+  box-shadow: 0px 0px 10px rgb(17, 60, 224);
 }
 
 .card-deck .card {
