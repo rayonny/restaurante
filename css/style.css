@@ -59,5 +59,10 @@ form {
   width: 100%;
   height: auto;
 }
+.rainbow-text {
+  background-image: linear-gradient(to right, red, orange, black, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  color: transparent !important; /* Adicione !important aqui */
+}
 
 
