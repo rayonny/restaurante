@@ -3,16 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Serviços de Chef de Cozinha</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title> Chef de Cozinha Val</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .profile-image-container {
+      position: fixed;
+      top: 100px; /* Ajuste conforme necessário */
+      right: 20px; /* Ajuste conforme necessário */
+      width: 200px; /* Ajuste conforme necessário */
+      z-index: 1000;
+    }
 
+    .profile-image {
+      width: 100%;
+      height: auto;
+    }
+  </style>
 
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Chef de Cozinha</a>
+  <a class="navbar-brand" href="#">
+    <img src="img/nav.gif" alt="Logo" style="height: 40px;">
+    Chef de Cozinha Valzinha
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -132,49 +148,51 @@
         <div class="card mb-4">
           <img src="img/molho.jpg" class="card-img-top" alt="Molho Madeira">
           <div class="card-body">
-          <h5 class="card-title">Molho Madeira"</h5>
-          <p class="card-text">R$30 por pessoa</p>
-          <input type="radio" name="menu" value="30"> Selecionar
+            <h5 class="card-title">Molho Madeira</h5>
+            <p class="card-text">R$30 por pessoa</p>
+            <input type="radio" name="menu" value="30"> Selecionar
+          </div>
         </div>
       </div>
     </div>
-</div>
-</section>
+  </section>
 
-<!-- Opção de Compra dos Ingredientes -->
-<section id="compra-ingredientes" class="mt-5">
-  <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
-  <div class="form-group">
-    <label for="option">Quem irá comprar os ingredientes?</label>
-    <select class="form-control" id="option" onchange="function showHideIngredientPrice() {
+  <!-- Opção de Compra dos Ingredientes -->
+  <section id="compra-ingredientes" class="mt-5">
+    <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
+    <div class="form-group">
+      <label for="option">Quem irá comprar os ingredientes?</label>
+      <select class="form-control" id="option" onchange="showHideIngredientPrice()">
+        <option value="cliente">Cliente</option>
+        <option value="profissional">Profissional</option>
+      </select>
+    </div>
+    <div class="form-group" id="ingredient-price" style="display: none;">
+      <label for="ingredientPrice">Preço dos Ingredientes por Pessoa:</label>
+      <input type="number" class="form-control" id="ingredientPrice" value="10" min="0">
+    </div>
+  </section>
 
-    }
-    showHideIngredientPrice()">
-      <option value="cliente">Cliente</option>
-      <option value="profissional">Profissional</option>
-    </select>
-  </div>
-  <div class="form-group" id="ingredient-price" style="display: none;">
-    <label for="ingredientPrice">Preço dos Ingredientes por Pessoa:</label>
-    <input type="number" class="form-control" id="ingredientPrice" value="10" min="0">
-  </div>
-</section>
+  <!-- Sobre Section -->
+  <section id="sobre" class="mt-5">
+    <h3 class="text-center">Descubra os Serviços Culinários de Val, sua Chef Pessoal</h3>
+  </section>
 
-<!-- Sobre Section -->
-<section id="sobre" class="mt-5">
-  <h3 class="text-center">Descubra os Serviços Culinários de Val, sua Chef Pessoal</h3>
+  <!-- Contato Section -->
+  <section id="contato" class="mt-5">
+    <h2 class="text-center">Contato</h2>
+    <p class="text-center">Entre em contato conosco através das nossas redes sociais ou envie um e-mail para valdericegomesuc@gmail.com</p>
+  </section>
 
-</section>
-
-<!-- Contato Section -->
-<section id="contato" class="mt-5">
-  <h2 class="text-center">Contato</h2>
-  <p class="text-center">Entre em contato conosco através das nossas redes sociais ou envie um e-mail para valdericegomesuc@gmail.com</p>
-</section>
   <!-- Fale Conosco Section -->
   <section id="fale-conosco" class="mt-5">
+    <div class="col-md-6">
+      <div class="profile-image-container">
+        <img src="img/val.jpg" class="profile-image" alt="Profile Image">
+      </div>
+    </div>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center align-items-center">
         <div class="col-md-6 text-center">
           <h2>Fale Conosco</h2>
           <form>
@@ -193,26 +211,30 @@
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
+
+
+
   <!-- Formulário para seleção de cardápio -->
-<form id="service-form" class="mt-4">
-  <div class="form-group">
-    <label for="people">Número de Pessoas:</label>
-    <input type="number" class="form-control" id="people" min="1" value="1">
-  </div>
-  <div class="form-group">
-    <label for="assistant">Deseja um Assistente? (R$50 fixo):</label>
-    <select class="form-control" id="assistant">
-      <option value="0">Não</option>
-      <option value="50">Sim</option>
-    </select>
-  </div>
-  <button type="button" class="btn btn-primary btn-block" onclick="calculateTotal()">Calcular Valor Total</button>
-</form>
-<h3 class="text-center mt-4">Valor Total: R$ <span id="total-value">0</span></h3>
+  <form id="service-form" class="mt-4">
+    <div class="form-group">
+      <label for="people">Número de Pessoas:</label>
+      <input type="number" class="form-control" id="people" min="1" value="1">
+    </div>
+    <div class="form-group">
+      <label for="assistant">Deseja um Assistente? (R$50 fixo):</label>
+      <select class="form-control" id="assistant">
+        <option value="0">Não</option>
+        <option value="50">Sim</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary btn-block" onclick="calculateTotal()">Calcular Valor Total</button>
+  </form>
+  <h3 class="text-center mt-4">Valor Total: R$ <span id="total-value">0</span></h3>
 </div>
 
 <!-- Botões de Redes Sociais -->
