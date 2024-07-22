@@ -1,33 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chef de Cozinha Val - Serviços Culinários</title>
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    .rainbow-text {
-      background-image: linear-gradient(to right, red, orange, black, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .profile-image-container {
-      position: fixed;
-      top: 100px;
-      right: 100px;
-      width: 90px;
-      z-index: 1000;
-    }
-
-    .profile-image {
-      width: 100%;
-      height: auto;
-    }
-  </style>
-
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
+
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,6 +23,9 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <a class="nav-link" href="calculadora.html">Calculadora</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#cardapio">Cardápio</a>
       </li>
       <li class="nav-item">
@@ -50,17 +35,19 @@
         <a class="nav-link" href="#contato">Contato</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#fale-conosco">Fale Conosco</a>
+        <a class="nav-link" href="cadastro.html">Cadastro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="agendamento.html">Agendamento</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<!-- Restante do seu conteúdo HTML -->
-
-</body>
-</html>
-
+<!-- Restante do conteúdo -->
 
 <div class="container mt-5">
   <h1 class="text-center">Serviços de Chef de Cozinha</h1>
@@ -112,7 +99,7 @@
           <div class="card-body">
             <h5 class="card-title">Feijoada</h5>
             <p class="card-text">R$25 por pessoa</p>
-            <input type="checkbox" name="menu" value="25"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Feijoada', 25)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
@@ -122,7 +109,7 @@
           <div class="card-body">
             <h5 class="card-title">Galinhada</h5>
             <p class="card-text">R$25 por pessoa</p>
-            <input type="checkbox" name="menu" value="25"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Galinhada', 25)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
@@ -132,7 +119,7 @@
           <div class="card-body">
             <h5 class="card-title">Coxa e Sobre Coxa Recheada</h5>
             <p class="card-text">R$30 por pessoa</p>
-            <input type="checkbox" name="menu" value="30"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Coxa e Sobre Coxa Recheada', 30)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
@@ -142,7 +129,7 @@
           <div class="card-body">
             <h5 class="card-title">Batata Rosti</h5>
             <p class="card-text">R$30 por pessoa</p>
-            <input type="checkbox" name="menu" value="30"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Batata Rosti', 30)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
@@ -152,7 +139,7 @@
           <div class="card-body">
             <h5 class="card-title">Arroz Carreteiro</h5>
             <p class="card-text">R$35 por pessoa</p>
-            <input type="checkbox" name="menu" value="35"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Arroz Carreteiro', 35)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
@@ -162,68 +149,71 @@
           <div class="card-body">
             <h5 class="card-title">Molho Madeira</h5>
             <p class="card-text">R$30 por pessoa</p>
-            <input type="checkbox" name="menu" value="30"> Selecionar
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Molho Madeira', 30)">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Formulário para seleção de cardápio -->
-  <form id="service-form" class="mt-4">
+  <!-- Opção de Compra dos Ingredientes -->
+  <section id="compra-ingredientes" class="mt-5">
+    <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
     <div class="form-group">
-      <label for="people">Número de Pessoas:</label>
-      <input type="number" class="form-control" id="people" min="1" value="1">
-    </div>
-    <div class="form-group">
-      <label for="assistant">Ajudante na Cozinha (R$150.00 Fixo):</label>
-      <select class="form-control" id="assistant">
-        <option value="0">Não</option>
-        <option value="150">Sim</option>
+      <label for="option">Quem irá comprar os ingredientes?</label>
+      <select class="form-control" id="option" onchange="showHideIngredientPrice()">
+        <option value="cliente">Cliente</option>
+        <option value="profissional">Profissional</option>
       </select>
     </div>
-    <button type="button" class="btn btn-primary btn-block" onclick="calculateTotal()">Calcular Valor Total</button>
-  </form>
-  <h3 class="text-center mt-4">Valor Total: R$ <span id="total-value">0</span></h3>
+    <div class="form-group" id="ingredient-price" style="display: none;">
+      <label for="ingredientCost">Valor dos Ingredientes:</label>
+      <input type="number" class="form-control" id="ingredientCost" value="0" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+      <label for="numPessoas">Número de Pessoas:</label>
+      <input type="number" class="form-control" id="numPessoas" value="1" min="1" onchange="calculateTotal()">
+    </div>
+    <div class="form-group">
+      <label for="numDias">Número de Dias:</label>
+      <input type="number" class="form-control" id="numDias" value="1" min="1" onchange="calculateTotal()">
+    </div>
+    <div class="form-group">
+      <label for="totalAmount">Valor Total a ser Pago:</label>
+      <input type="text" class="form-control" id="totalAmount" readonly>
+    </div>
+  </section>
 
-  <!-- Botões de Redes Sociais -->
-  <div class="social-buttons text-center mt-5">
-    <a href="https://api.whatsapp.com/send?phone=5561993133448" class="btn btn-success mx-2">WhatsApp</a>
-    <a href="https://www.facebook.com/valderice.gomes.5" class="btn btn-primary mx-2">Facebook</a>
-    <a href="https://www.instagram.com/valdericegomes/" class="btn btn-danger mx-2">Instagram</a>
-  </div>
+  <!-- Contato Section -->
+  <section id="contato" class="mt-5">
+    <h2 class="text-center">Entre em Contato</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea class="form-control" id="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </section>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="js/script.js"></script>
+  <!-- Footer -->
+  <footer class="text-center mt-5">
+    <p>© 2024 Val Personal Cheff. Todos os direitos reservados.</p>
+  </footer>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      function calculateTotal() {
-        const selectedMenus = document.querySelectorAll('input[name="menu"]:checked');
-        const numberOfPeople = parseInt(document.getElementById('people').value);
-        const assistantPrice = parseFloat(document.getElementById('assistant').value);
+<!-- jQuery e Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
-        if (selectedMenus.length === 0 || isNaN(numberOfPeople) || isNaN(assistantPrice)) {
-          alert("Por favor, preencha todos os campos corretamente.");
-          return;
-        }
-
-        let totalMenuPrice = 0;
-
-        selectedMenus.forEach(menu => {
-          totalMenuPrice += parseFloat(menu.value);
-        });
-
-        const totalPrice = (totalMenuPrice * numberOfPeople) + assistantPrice;
-
-        document.getElementById('total-value').textContent = totalPrice.toFixed(2);
-      }
-
-      document.querySelector('button').addEventListener('click', calculateTotal);
-    });
-  </script>
-
-  </div>
-  </html>
+</html>

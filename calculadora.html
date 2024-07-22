@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/nav.gif" alt="Logo" style="height: 40px;">
+    <span class="rainbow-text">Val Personal Cheff</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="calculadora.html">Calculadora</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#cardapio">Cardápio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#sobre">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#contato">Contato</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cadastro.html">Cadastro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="agendamento.html">Agendamento</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h1 class="text-center">Calculadora de Consumo</h1>
+  <form>
+    <div class="form-group">
+      <label for="homens">Número de Homens:</label>
+      <input type="number" class="form-control" id="homens" value="0" min="0">
+    </div>
+    <div class="form-group">
+      <label for="mulheres">Número de Mulheres:</label>
+      <input type="number" class="form-control" id="mulheres" value="0" min="0">
+    </div>
+    <div class="form-group">
+      <label for="criancas">Número de Crianças:</label>
+      <input type="number" class="form-control" id="criancas" value="0" min="0">
+    </div>
+    <div class="form-group">
+      <label for="carne">Tipo de Carne:</label>
+      <select class="form-control" id="carne">
+        <option value="picanha">Picanha</option>
+        <option value="maminha">Maminha</option>
+        <option value="alcatra">Alcatra</option>
+        <option value="frango">Frango</option>
+        <option value="linguica">Linguiça</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="bebidas">Incluir Bebidas:</label>
+      <select class="form-control" id="bebidas">
+        <option value="agua">Água/Suco</option>
+        <option value="refrigerante">Refrigerante</option>
+        <option value="cerveja">Cerveja</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="calcular()">Calcular</button>
+  </form>
+
+  <div id="resultados" class="mt-4" style="display: none;">
+    <h2>Resultado:</h2>
+    <p><strong>Total de Carne Bovina:</strong> <span id="totalCarne"></span> g</p>
+    <p><strong>Total de Frango:</strong> <span id="totalFrango"></span> g</p>
+    <p><strong>Total de Linguiça:</strong> <span id="totalLinguica"></span> g</p>
+    <p><strong>Total de Bebidas:</strong> <span id="totalBebidas"></span> ml</p>
+  </div>
+</div>
+
+<!-- jQuery e Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+
+</html>
