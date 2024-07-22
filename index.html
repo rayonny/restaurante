@@ -1,31 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chef de Cozinha Val - Serviços Culinários</title>
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
   <style>
+    body {
+      background-image: url(img/fundo.jpg);
+      background-size: cover;
+      background-position: center;
+      background-color: #18050f;
+    }
+
+    h1,
+    h2,
+    h5 {
+      color: #19f1df;
+    }
+
+    p,
+    label,
+    span,
+    .nav-link {
+      color: #18050f;
+    }
+
     .rainbow-text {
       background-image: linear-gradient(to right, red, orange, black, green, blue, indigo, violet);
       -webkit-background-clip: text;
-      color: transparent;
+      color: transparent !important;
+    }
+
+    .social-buttons a {
+      width: 150px;
+      margin: 5px;
+    }
+
+    .calculator-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgb(201, 12, 12);
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .profile-image-container {
       position: fixed;
       top: 100px;
-      right: 100px;
-      width: 90px;
+      right: 20px;
+      width: 200px;
       z-index: 1000;
     }
 
     .profile-image {
       width: 100%;
       height: auto;
+      max-width: 150%;
+      border-radius: 70%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgb(201, 12, 12);
+    }
+
+    .contact-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-section {
+        display: flex;
+        align-items: center;
+      }
     }
   </style>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js"></script>
 
 </head>
 <body>
@@ -40,6 +99,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#calculadora">Calculadora de Churrasco</a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#cardapio">Cardápio</a>
       </li>
@@ -169,6 +232,65 @@
     </div>
   </section>
 
+
+  <!-- Opção de Compra dos Ingredientes -->
+  <section id="compra-ingredientes" class="mt-5">
+    <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
+    <div class="form-group">
+      <label for="option">Quem irá comprar os ingredientes?</label>
+      <select class="form-control" id="option" onchange="showHideIngredientPrice()">
+        <option value="cliente">Cliente</option>
+        <option value="profissional">Profissional</option>
+      </select>
+    </div>
+    <div class="form-group" id="ingredient-price" style="display: none;">
+      <label for="ingredientPrice">Preço dos Ingredientes por Pessoa:</label>
+      <input type="number" class="form-control" id="ingredientPrice" value="10" min="0">
+    </div>
+  </section>
+
+  <!-- Sobre Section -->
+  <section id="sobre" class="mt-5">
+    <h3 class="text-center">Descubra os Serviços Culinários de Val, sua Chef Pessoal</h3>
+  </section>
+
+  <!-- Contato Section -->
+  <section id="contato" class="mt-5">
+    <h2 class="text-center">Contato</h2>
+    <p class="text-center">Entre em contato conosco através das nossas redes sociais ou envie um e-mail para valdericegomesuc@gmail.com</p>
+  </section>
+
+  <!-- Calculadora Section -->
+  <section id="calculadora" class="mt-5">
+    <h2 class="text-center">Calcular Consumo </h2>
+    <div class="calculator-container">
+      <form>
+        <div class="form-group">
+          <label for="numHomens">Número de Homens:</label>
+          <input type="number" class="form-control" id="numHomens" name="numHomens" min="0">
+        </div>
+        <div class="form-group">
+          <label for="numMulheres">Número de Mulheres:</label>
+          <input type="number" class="form-control" id="numMulheres" name="numMulheres" min="0">
+        </div>
+        <div class="form-group">
+          <label for="numCriancas">Número de Crianças:</label>
+          <input type="number" class="form-control" id="numCriancas" name="numCriancas" min="0">
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="calculateChurrasco()">Calcular</button>
+      </form>
+      <div id="results" class="mt-3">
+        <h4 class="text-center">Resultados</h4>
+        <ul>
+          <li>Carne: <span id="meatAmount">0.00</span> kg</li>
+          <li>Cerveja: <span id="beerAmount">0.00</span> litros</li>
+          <li>Suco/Água: <span id="sodaAmount">0.00</span> litros</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Formulário para seleção de cardápio -->
   <form id="service-form" class="mt-4">
     <div class="form-group">
@@ -199,31 +321,46 @@
   <script src="js/script.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      function calculateTotal() {
-        const selectedMenus = document.querySelectorAll('input[name="menu"]:checked');
-        const numberOfPeople = parseInt(document.getElementById('people').value);
-        const assistantPrice = parseFloat(document.getElementById('assistant').value);
+    // Função para calcular o churrasco
+    // Função para calcular o churrasco
+    function calculateChurrasco() {
+      const homens = parseInt(document.getElementById('numHomens').value) || 0;
+      const mulheres = parseInt(document.getElementById('numMulheres').value) || 0;
+      const criancas = parseInt(document.getElementById('numCriancas').value) || 0;
 
-        if (selectedMenus.length === 0 || isNaN(numberOfPeople) || isNaN(assistantPrice)) {
-          alert("Por favor, preencha todos os campos corretamente.");
-          return;
-        }
+      // Let's assume different consumption rates for men, women, and children
+      const meatPerHomem = 0.5; // kg per man
+      const meatPerMulher = 0.4; // kg per woman
+      const meatPerCrianca = 0.2; // kg per child
 
-        let totalMenuPrice = 0;
+      const beerPerHomem = 2; // liters per man
+      const beerPerMulher = 1.5; // liters per woman
+      const beerPerCrianca = 0; // children do not consume beer
 
-        selectedMenus.forEach(menu => {
-          totalMenuPrice += parseFloat(menu.value);
-        });
+      const sodaPerHomem = 0.5; // liters per man
+      const sodaPerMulher = 0.7; // liters per woman
+      const sodaPerCrianca = 1; // liters per child
 
-        const totalPrice = (totalMenuPrice * numberOfPeople) + assistantPrice;
+      const meatAmount = (homens * meatPerHomem) + (mulheres * meatPerMulher) + (criancas * meatPerCrianca);
+      const beerAmount = (homens * beerPerHomem) + (mulheres * beerPerMulher);
+      const sodaAmount = (homens * sodaPerHomem) + (mulheres * sodaPerMulher) + (criancas * sodaPerCrianca);
 
-        document.getElementById('total-value').textContent = totalPrice.toFixed(2);
-      }
+      document.getElementById('meatAmount').innerText = meatAmount.toFixed(2);
+      document.getElementById('beerAmount').innerText = beerAmount.toFixed(2);
+      document.getElementById('sodaAmount').innerText = sodaAmount.toFixed(2);
+    }
 
-      document.querySelector('button').addEventListener('click', calculateTotal);
-    });
+
+    // Função para calcular o custo do cardápio
+    function calculateMenuCost() {
+      const menuItems = document.querySelectorAll('.menu-checkbox:checked');
+      let totalCost = 0;
+      menuItems.forEach(item => {
+        totalCost += parseFloat(item.value);
+      });
+      document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+    }
   </script>
-
   </div>
+
   </html>
