@@ -46,7 +46,7 @@ function calcularTotalCarrinho() {
 
 // Função para enviar pedido via WhatsApp
 function enviarWhatsApp() {
-  const telefone = '5551999999999'; // Substitua pelo número desejado
+  const telefone = '5561993133448'; // Substitua pelo número desejado
   const numPessoas = parseInt(document.getElementById('numPessoas').value) || 0;
   const ajudanteCozinha = document.getElementById('ajudanteCozinha').value == "150" ? "Sim" : "Não";
   const mensagem = `Olá, gostaria de fazer o seguinte pedido:\n\n${(JSON.parse(localStorage.getItem('carrinho')) || []).map(item => `${item.nome}: R$${item.preco.toFixed(2)}`).join('\n')}\n\nNúmero de Pessoas: ${numPessoas}\nAjudante na Cozinha: ${ajudanteCozinha}\n\nTotal: R$${document.getElementById('totalCarrinho').value}`;
