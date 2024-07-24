@@ -43,6 +43,9 @@
       <li class="nav-item">
         <a class="nav-link" href="agendamento.html">Agendamento</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="carrinho.html">Carrinho</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -156,33 +159,7 @@
     </div>
   </section>
 
-  <!-- Opção de Compra dos Ingredientes -->
-  <section id="compra-ingredientes" class="mt-5">
-    <h2 class="text-center">Opção de Compra dos Ingredientes</h2>
-    <div class="form-group">
-      <label for="option">Quem irá comprar os ingredientes?</label>
-      <select class="form-control" id="option" onchange="showHideIngredientPrice()">
-        <option value="cliente">Cliente</option>
-        <option value="profissional">Profissional</option>
-      </select>
-    </div>
-    <div class="form-group" id="ingredient-price" style="display: none;">
-      <label for="ingredientCost">Valor dos Ingredientes:</label>
-      <input type="number" class="form-control" id="ingredientCost" value="0" min="0" step="0.01">
-    </div>
-    <div class="form-group">
-      <label for="numPessoas">Número de Pessoas:</label>
-      <input type="number" class="form-control" id="numPessoas" value="1" min="1" onchange="calculateTotal()">
-    </div>
-    <div class="form-group">
-      <label for="numDias">Número de Dias:</label>
-      <input type="number" class="form-control" id="numDias" value="1" min="1" onchange="calculateTotal()">
-    </div>
-    <div class="form-group">
-      <label for="totalAmount">Valor Total a ser Pago:</label>
-      <input type="text" class="form-control" id="totalAmount" readonly>
-    </div>
-  </section>
+
 
   <!-- Contato Section -->
   <section id="contato" class="mt-5">
