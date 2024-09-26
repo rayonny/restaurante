@@ -7,13 +7,15 @@
   <title>Carrinho de Compras</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+  <script src="js/script.js"></script>
+
+
 </head>
 
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="index.html">
     <img src="img/nav.gif" alt="Logo" style="height: 40px;">
     <span class="rainbow-text">Val Personal Cheff</span>
   </a>
@@ -55,13 +57,48 @@
     <input type="text" class="form-control" id="totalCarrinho" readonly>
   </div>
 
-  <button class="btn btn-primary" onclick="enviarWhatsApp()">Enviar Pedido via WhatsApp</button>
+  <button class="btn btn-primary" onclick="irParaAgendamento()">Ir para Agendamento</button>
+
 </div>
 
 <!-- jQuery e Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Função para calcular o total do carrinho
+  function calcularTotalCarrinho() {
+    const numPessoas = parseInt(document.getElementById('numPessoas').value) || 0;
+    const ajudanteCozinha = parseFloat(document.getElementById('ajudanteCozinha').value);
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const totalItens = carrinho.reduce((acc, item) => acc + item.preco, 0);
+    const total = (totalItens * numPessoas) + ajudanteCozinha;
+
+    document.getElementById('totalCarrinho').value = `R$${total.toFixed(2)}`;
+
+    // Salvar total no localStorage
+    localStorage.setItem('totalCarrinho', total.toFixed(2));
+  }
+
+  // Função para redirecionar para a página de agendamento
+  function irParaAgendamento() {
+    const numPessoas = document.getElementById('numPessoas').value;
+    const ajudanteCozinha = document.getElementById('ajudanteCozinha').value;
+
+    // Armazenar dados necessários no localStorage
+    localStorage.setItem('numPessoas', numPessoas);
+    localStorage.setItem('ajudanteCozinha', ajudanteCozinha);
+
+    // Redirecionar para a página de agendamento
+    window.location.href = 'agendamento.html';
+  }
+
+  // Inicialização do carrinho na página
+  document.addEventListener('DOMContentLoaded', function() {
+    exibirItensCarrinho(); // Chame a função que exibe os itens do carrinho
+  });
+</script>
 </body>
 
 </html>

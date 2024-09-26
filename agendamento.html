@@ -22,31 +22,19 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="calculadora.html">Calculadora de Churrasco</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html#cardapio">Cardápio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html#contato">Contato</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="cadastro.html">Cadastro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.html">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="agendamento.html">Agendamento</a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="calculadora.html">Calculadora de Churrasco</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.html#cardapio">Cardápio</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
+      <li class="nav-item"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+      <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="agendamento.html">Agendamento</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="container mt-5">
   <h1 class="text-center">Agendamento</h1>
-  <form>
+  <form id="agendamentoForm">
     <div class="form-group">
       <label for="nome">Nome:</label>
       <input type="text" class="form-control" id="nome" required>
@@ -60,6 +48,14 @@
       <input type="tel" class="form-control" id="telefone" required>
     </div>
     <div class="form-group">
+      <label for="endereco">Endereço:</label>
+      <input type="text" class="form-control" id="endereco" required>
+    </div>
+    <div class="form-group">
+      <label for="localizacao">Localização:</label>
+      <input type="text" class="form-control" id="localizacao" placeholder="Ponto de Referência (ex: próximo ao parque)" required>
+    </div>
+    <div class="form-group">
       <label for="data">Data do Evento:</label>
       <input type="date" class="form-control" id="data" required>
     </div>
@@ -67,10 +63,19 @@
       <label for="hora">Hora do Evento:</label>
       <input type="time" class="form-control" id="hora" required>
     </div>
+
+    <!-- Novo campo para a quantidade de pessoas -->
     <div class="form-group">
-      <label for="numPessoas">Número de Pessoas:</label>
-      <input type="number" class="form-control" id="numPessoas" min="1" required>
+      <label for="numPessoas">Quantidade de Pessoas:</label>
+      <input type="number" class="form-control" id="numPessoas" required>
     </div>
+
+    <!-- Campo de Total do Pedido -->
+    <div class="form-group">
+      <label for="totalCarrinho">Total do Pedido:</label>
+      <input type="text" class="form-control" id="totalCarrinho" readonly>
+    </div>
+
     <div class="form-group">
       <label for="mensagem">Mensagem:</label>
       <textarea class="form-control" id="mensagem" rows="3"></textarea>
@@ -79,11 +84,54 @@
   </form>
 </div>
 
-<!-- jQuery e Bootstrap JS -->
+<!-- jQuery and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="js/script.js"></script>
+
+<script>
+  // Quando a página de agendamento carregar, busque o total do carrinho no localStorage
+  document.addEventListener('DOMContentLoaded', function () {
+    const totalCarrinho = localStorage.getItem('totalCarrinho') || '0.00';
+    document.getElementById('totalCarrinho').value = `R$ ${totalCarrinho}`;
+  });
+
+  // Envio de agendamento via WhatsApp
+  document.getElementById('agendamentoForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get form values
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const endereco = document.getElementById('endereco').value;
+    const localizacao = document.getElementById('localizacao').value;
+    const data = document.getElementById('data').value;
+    const hora = document.getElementById('hora').value;
+    const numPessoas = document.getElementById('numPessoas').value; // Captura a quantidade de pessoas
+    const mensagem = document.getElementById('mensagem').value;
+
+    // Retrieve total and items from localStorage
+    const totalCarrinho = localStorage.getItem('totalCarrinho') || '0.00';
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Check if the cart contains items
+    if (carrinho.length === 0) {
+      alert("Seu carrinho está vazio!");
+      return; // Prevent submission if the cart is empty
+    }
+
+    // Create string with the selected items
+    const itensCarrinho = carrinho.map(item => `${item.nome}: R$${item.preco.toFixed(2)}`).join('\n');
+
+    // Create WhatsApp message including cart total and items
+    const message = `*Agendamento*\nNome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nEndereço: ${endereco}\nLocalização: ${localizacao}\nData: ${data}\nHora: ${hora}\nQuantidade de Pessoas: ${numPessoas}\nMensagem: ${mensagem}\n\n*Pratos Selecionados:*\n${itensCarrinho}\nTotal do Pedido: R$${totalCarrinho}`;
+
+    const whatsappURL = `https://api.whatsapp.com/send?phone=5561993133448&text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+  });
+</script>
 </body>
 
 </html>
